@@ -35,4 +35,8 @@ Step 8: Wrote an RSpec test using one-liner syntax and added the
 Step 9: Created Bike class and new bike_spec file.
 
 Step 10: Required bike.rb in docking docking_station.rb and made the working?
-         method in Bike class pass. 
+         method in Bike class pass.
+
+Step 11: Added instance variable and attribute reader for bike.
+
+Step 12: Raised an exception for when no bikes are available.
