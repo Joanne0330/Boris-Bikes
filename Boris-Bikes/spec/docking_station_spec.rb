@@ -7,26 +7,36 @@ describe DockingStation do
 
   it 'docks something' do
     bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
+    expect(subject.dock(bike)).to eq [bike]
   end
 
   it 'returns docked bike' do
     bike = Bike.new
     subject.dock(bike)
-    expect(subject.bike).to eq bike
+    expect(subject.bike_rack).to eq [bike]
   end
 
   describe '#release_bike' do
     it 'releases a bike' do
     bike = Bike.new
+    p subject.bike_rack
     subject.dock(bike)
-    expect(subject.release_bike).to eq bike
+    p subject.bike_rack
+    expect(subject.release_bike).to eq [bike]
     end
   end
 
   describe '#release_bike' do
     it 'raies an error when there are no bikes available' do
     expect {subject.release_bike}.to raise_error 'No bikes available'
+    end
+  end
+
+  describe '#dock' do
+    it 'cannot accept another bike because bike rack is full' do
+      bike = Bike.new
+      20.times {subject.dock(bike)}
+      expect {subject.dock(bike)}.to raise_error 'No space available to dock'
     end
   end
 end
